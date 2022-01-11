@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import Values from "values.js";
+import SingleColor from './SingleColor.js';
 
 function App() {
+  const [color, setColor] = useState("");
+  const [list, setList] = useState(new Values('#f15025').all(10));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      let colors = new Values(color).all(10);
+      setList(colors);
+      document.getElementById("input").style.borderColor = "var(--secondary-color)";
+    } catch (error) {
+      document.getElementById("input").style.borderColor = "#cc0000";
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id="top">
+        <h1>Color Generator</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            id="input"
+            type="text"
+            value={color}
+            placeholder="#f15025"
+            onChange={(e) => setColor(e.target.value)}
+          />
+          <button type="submit">Generate</button>
+        </form>
+      </div>
+      <div id="bottom">
+        {list.map((color, index)=> {
+            return <SingleColor key={index} {...color} index={index} hexColor={color.hex}/>
+          })}
+      </div>
+    </>
   );
 }
 

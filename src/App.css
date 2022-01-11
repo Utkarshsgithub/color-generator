@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --primary-color: #49a6e95d;
+  --secondary-color: #49a6e9;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: var(--primary-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#top {
   display: flex;
-  flex-direction: column;
+  margin-top: 25px;
+  margin-left: 25px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#top h1 {
+  color: #102331;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#top input {
+  margin-left: 50px;
+  outline: none;
+  border: 2px solid var(--secondary-color);
+  padding: 5px;
+  border-radius: 3px;
+  width: 250px;
+  font-size: large;
+  height: 30px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#top button {
+  height: 44px;
+  color: #fff;
+  outline: none;
+  padding: 5px 10px;
+  border: 2px solid var(--secondary-color);
+  border-left: 0;
+  border-radius: 3px;
+  background:  var(--secondary-color);
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: .2s ease-in-out;
+  font-size: large;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+#top button:hover {
+  color: var(--secondary-color);
+  background: transparent;
+}
+
+#bottom {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#color {
+  height: 200px;
+  width: 14.286%;
+  min-width: 100px;
+}
+
+.color-dark {
+  color: #111;
+}
+
+.color-light {
+  color: #fff;
+}
+
+.text {
+  margin: 10% 0 0 10%;
+}
+
+@media only screen and (max-width: 680px) {
+  #top {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  #top input {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 390px) {
+  #top input {
+    width: 60%;
   }
 }
